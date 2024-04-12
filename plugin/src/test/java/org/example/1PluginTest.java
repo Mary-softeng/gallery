@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 /**
  * A simple unit test for the 'org.example.greeting' plugin.
  */
-class 1PluginTest {
+class PluginTest1 {
     @Test void pluginRegistersATask() {
         // Create a test project and apply the plugin
         Project project = ProjectBuilder.builder().build();
