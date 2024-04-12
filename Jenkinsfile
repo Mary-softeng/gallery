@@ -32,13 +32,6 @@ pipeline {
                 }
             }
         }
-        stage("Start server") { // Optional stage for demo purposes
-            when { // Optional stage only runs if tests succeed
-                expression { return $currentBuild.currentResult == 'SUCCESS' }
-            }
-            steps {
-                sh 'node server' // Start the server using node server
-            }
-        }
+      
     }
 }
