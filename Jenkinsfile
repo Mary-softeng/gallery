@@ -36,7 +36,7 @@ pipeline {
     }
     post {
         always{
-            slackSend channel: 'devops-project'
+            slackSend channel: 'devops-project', message: 'Week2_Ip'
         }
     }
 }
