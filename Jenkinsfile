@@ -6,7 +6,10 @@ pipeline {
     triggers { // Configure automatic triggers
         githubPush( // Trigger on push to GitHub repository
             branches: "master", // Monitor the "master" branch
-            activities: '*/**' // Trigger on any push event to the branch
+            activities: [ // Specify desired push events (optional)
+                hudson.plugins.git.util.BuildTriggerConfig$BranchCause.GIT_PUSH, // Push to branch
+                hudson.plugins.git.util.BuildTriggerConfig$BitbucketCause.PUSH // Push to Bitbucket (optional)
+            ]
         )
     }
     stages {
