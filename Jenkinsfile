@@ -3,11 +3,17 @@ pipeline {
     tools {
         nodejs "node"
     }
+    triggers { // Configure automatic triggers
+        github( // Trigger on push to GitHub repository
+            branches: "master", // Monitor the "master" branch
+            activities: '*/**' // Trigger on any push event to the branch
+        )
+    }
     stages {
         stage("Clone code") {
             steps {
                 git branch: 'master', url: 'https://github.com/Mary-softeng/gallery.git'
-                sh 'npm install'
+                sh 'npm install' // Install dependencies
             }
         }
         stage("Run tests") {
@@ -15,10 +21,10 @@ pipeline {
                 sh 'npm test' // Execute the tests using npm test
             }
             post { // Post-build actions for this stage
-                success { // Only send email if the tests succeed
+                success {
                     echo 'Tests passed!'
                 }
-                failure { // Send email notification on test failure
+                failure {
                     emailaction( // Configure email notification
                         to: 'mary.njuguna@student.moringaschool.com', // Replace with recipient email
                         subject: 'Gallery Tests Failed - Build $BUILD_NUMBER',
@@ -26,6 +32,14 @@ pipeline {
                         contentType: 'text/html' // Optional: Set content type for HTML formatting
                     )
                 }
+            }
+        }
+        stage("Start server (for demo)") { // Optional stage for demo purposes
+            when { // Optional stage only runs if tests succeed
+                expression { return $currentBuild.currentResult == 'SUCCESS' }
+            }
+            steps {
+                sh 'node server' // Start the server using node server
             }
         }
     }
