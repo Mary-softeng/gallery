@@ -32,7 +32,7 @@ pipeline {
                 }
             }
         }
-        stage("Start server (for demo)") { // Optional stage for demo purposes
+        stage("Start server") { // Optional stage for demo purposes
             when { // Optional stage only runs if tests succeed
                 expression { return $currentBuild.currentResult == 'SUCCESS' }
             }
