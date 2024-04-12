@@ -34,4 +34,9 @@ pipeline {
         }
       
     }
+    post {
+        always{
+            slackSend channel: 'devops-project'
+        }
+    }
 }
