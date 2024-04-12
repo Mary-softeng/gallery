@@ -4,7 +4,7 @@ pipeline {
         nodejs "node"
     }
     triggers { // Configure automatic triggers
-        github( // Trigger on push to GitHub repository
+        githubPush( // Trigger on push to GitHub repository
             branches: "master", // Monitor the "master" branch
             activities: '*/**' // Trigger on any push event to the branch
         )
