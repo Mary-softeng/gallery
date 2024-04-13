@@ -36,7 +36,7 @@ pipeline {
     }
     post {
         always{
-            slackSend channel: 'devops-project', message: 'Week2_Ip'
+            slackSend channel: 'devops-project', message: 'https://mary-njuguna-ip-deploy-34ab725b7ca9.herokuapp.com/'
         }
     }
 }
