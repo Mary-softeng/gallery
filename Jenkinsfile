@@ -24,7 +24,7 @@ pipeline {
                 }
                 failure {
                     emailaction( // Configure email notification
-                        to: 'mary.njuguna@student.moringaschool.com', // Replace with recipient email
+                        to: 'mary.njuguna1@student.moringaschool.com', // Replace with recipient email
                         subject: 'Gallery Tests Failed - Build $BUILD_NUMBER',
                         body: 'Tests failed for build number $BUILD_NUMBER. Check the Jenkins console for details.',
                         contentType: 'text/html' // Optional: Set content type for HTML formatting
